@@ -1,0 +1,55 @@
+* debut d'un fichier yaml
+#+BEGIN_SRC yaml
+---
+#+END_SRC
+** variables
+
+** tableaux
+#+BEGIN_SRC yaml
+tableau:
+  - "un"
+  - "deux"
+  - 3
+#+END_SRC
+
+ou:
+
+#+BEGIN_SRC yaml
+tableau: ["un", "deux", 3]
+#+END_SRC
+
+** structure clef/valeur
+#+BEGIN_SRC yaml
+utilisateur1:
+  - nom: pierre
+  - prenom: jean
+#+END_SRC
+
+ou:
+#+BEGIN_SRC yaml
+utilisateur1: {nom: pierre, prenom: jean}
+#+END_SRC
+
+** tableaux de table de hachage
+#+BEGIN_SRC yaml
+liste_utilisateurs:
+  - nom: pierre
+    prenom: pierre
+  - nom : pierre
+    prenom: sarah
+#+END_SRC
+
+ou:
+
+#+BEGIN_SRC yaml
+liste_utilisateurs:
+  - utilisateur1: {nom: pierre, prenom: jean}
+  - utilisateur2: {nom: pierre, prenom: sarah}
+#+END_SRC
+
+ou:
+#+BEGIN_SRC yaml
+users: [{nom: perre, prenom: yannig},{nom: perre, prenom: sarah}]
+#+END_SRC
+
+* playbook

@@ -1,0 +1,19 @@
+---
+- name: "Apache installation"
+  hosts: all
+  tasks:
+    - name: "Install apache package"
+      yum:
+        name: "httpd"
+        state: "present"
+    - name: "Start apache service"
+      service:
+        name: "httpd"
+        state: "started"
+        enabled: yes
+    - name: "Copy test.html"
+      copy:
+        src: "test.html"
+        dest: "/var/www/html"
+        owner: "apache"
+        group: "apache"
