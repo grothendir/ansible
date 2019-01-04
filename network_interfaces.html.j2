@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Machine vps-centos</title>
+    <title>Machine {{inventory_hostname}}</title>
   </head>
   <body>
     <div id="app"></div>
-    <p>Cette machine s'appelle vps-centos</p>
+    <p>Cette machine s'appelle {{inventory_hostname}}</p>
     <p>Ci-dessous la liste de ces adresses:</p>
     <ul>
-            <li>192.168.122.1</li>
-            <li>10.0.0.138</li>
-            <li>192.168.42.1</li>
-          </ul>
+      {% for ip in ansible_all_ipv4_addresses %}
+      <li>{{ip}}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>
