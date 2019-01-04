@@ -17,3 +17,22 @@
         dest: "/var/www/html"
         owner: "apache"
         group: "apache"
+    - name: "autoriser le service http"
+      firewalld:
+        immediate: true
+        service: http
+        permanent: true
+        state: enabled
+    - name: "autoriser le service https"
+      firewalld:
+        immediate: true
+        service: https
+        permanent: true
+        state: enabled
+        
+[active-directory]
+active-directory-1 ansible_connection=winrm
+[container]
+container-1 ansible_connection=docker
+          
+        

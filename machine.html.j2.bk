@@ -1,0 +1,4 @@
+vps-centos ansible_user=ulysse
+kvm-centos ansible_user=ulysse
+vps-centos inventory_hostname=vps-centos
+kvm-centos inventory_hostname=kvm-centos

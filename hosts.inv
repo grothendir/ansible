@@ -1,0 +1,7 @@
+[groupe1]
+vps-centos ansible_user=ulysse
+
+[groupe2]
+kvm-centos ansible_user=ulysse
+
+do.dtc.wf ansible_user=deploy

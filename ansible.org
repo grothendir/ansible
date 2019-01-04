@@ -53,3 +53,58 @@ users: [{nom: perre, prenom: yannig},{nom: perre, prenom: sarah}]
 #+END_SRC
 
 * playbook
+#+BEGIN_SRC yaml
+---
+- name: "Apache installation"
+  hosts: all
+  tasks:
+    - name: "Install apache package"
+      yum:
+        name: "httpd"
+        state: "present"
+    - name: "Start apache service"
+      service:
+        name: "httpd"
+        state: "started"
+        enabled: yes
+    - name: "Copy test.html"
+      copy:
+        src: "test.html"
+        dest: "/var/www/html"
+        owner: "apache"
+        group: "apache"
+
+#+END_SRC
+
+#+BEGIN_SRC shell
+curl http://localhost/test.html
+#+END_SRC
+
+ça marche en local, mais inaccessible depuis l'extérieur: problème de firewall
+on autorise le service https
+#+BEGIN_SRC yaml
+    - name: "autoriser le service https"
+      firewalld:
+        service: https
+        permanent: true
+        state: enabled
+#+END_SRC
+
+ou bien on ouvre le port 443:
+#+BEGIN_SRC yaml
+    - name: "ouvrir le port 443"
+      firewalld:
+        port: 443
+        permanent: true
+        state: enabled
+#+END_SRC
+
+* inventaire
+groupe: entre crochets
+#+BEGIN_SRC yaml
+[un_groupe]
+machine1
+machine2
+#+END_SRC
+
+
